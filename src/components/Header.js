@@ -65,8 +65,9 @@ const Header = () => {
               }}
               value={currency}
               onClick={(e) => {
-                if (e.target.value !== 0) {
+                if (e.target.value !== 0 && e.target.value !== undefined) {
                   setCurrency(e.target.value);
+                  console.log(e.target.value);
                 }
               }}
             >
