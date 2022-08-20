@@ -57,8 +57,8 @@ const CoinsTable = () => {
   const handleSearch = () => {
     return coins.filter(
       (coin) =>
-        coin.name.toLowerCase().includes(search) ||
-        coin.symbol.toLowerCase().includes(search)
+        (coin.name || "").toLowerCase().includes(search) ||
+        (coin.symbol || "").toLowerCase().includes(search)
     );
   };
 
@@ -197,7 +197,7 @@ const CoinsTable = () => {
             justifyContent: "center",
           }}
           classes={{ ul: classes.pagination }}
-          count={(handleSearch()?.length / 10).toFixed(0)}
+          count={Number((handleSearch()?.length / 10).toFixed(0))}
           onChange={(_, value) => {
             setPage(value);
             window.scroll(0, 450);
